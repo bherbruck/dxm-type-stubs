@@ -112,7 +112,7 @@ def filepeek(fileindex: int) -> int:
     """
     ...
 
-def getreg(reg: int, sid: int, mbtype: int = 0) -> Union[int, float]:
+def getreg(reg: int, sid: int, mbtype: int) -> Union[int, float]:
     """
     Returns a register value.
 
@@ -143,8 +143,39 @@ def getreg(reg: int, sid: int, mbtype: int = 0) -> Union[int, float]:
     """
     ...
 
+def setreg(reg: int, value: Union[int, float], sid: int, mbtype: int) -> int:
+    """
+    Set a register value.
+
+    Args:
+        reg: The register address
+        value: The value to set. Integer values can be written to any register;
+               floating point values can only be written to floating point registers.
+        sid: The Modbus Slave ID
+            0-198: External Modbus slave devices
+            199: Internal Local Registers
+            200: I/O board registers
+            201: Display board registers
+            203: On-board I/O
+        mbtype: The Modbus Register Type (ignored but reserved for future use)
+            0: holding register (all DXM local registers are holding registers)
+            3: coil
+            4: input
+            5: input register
+            6: single coil
+            7: single register
+
+    Returns:
+        0 on success or an error code on failure
+        (even on invalid register set, for example, non-writeable registers)
+
+    Notes:
+        This call may take some time due to networking delays when external devices are polled.
+    """
+    ...
+
 def multiget(
-    reg: int, count: int, sid: int, mbtype: int = 0
+    reg: int, count: int, sid: int, mbtype: int
 ) -> Union[List[int], List[float]]:
     """
     Returns a list of register values.
@@ -177,7 +208,7 @@ def multiget(
     ...
 
 def multiset(
-    reg: int, values: Union[List[int], List[float]], sid: int, mbtype: int = 0
+    reg: int, values: Union[List[int], List[float]], sid: int, mbtype: int
 ) -> int:
     """
     Set multiple register values.
@@ -204,37 +235,6 @@ def multiset(
 
     Returns:
         0 on success or an error code on failure
-
-    Notes:
-        This call may take some time due to networking delays when external devices are polled.
-    """
-    ...
-
-def setreg(reg: int, value: Union[int, float], sid: int, mbtype: int = 0) -> int:
-    """
-    Set a register value.
-
-    Args:
-        reg: The register address
-        value: The value to set. Integer values can be written to any register;
-               floating point values can only be written to floating point registers.
-        sid: The Modbus Slave ID
-            0-198: External Modbus slave devices
-            199: Internal Local Registers
-            200: I/O board registers
-            201: Display board registers
-            203: On-board I/O
-        mbtype: The Modbus Register Type (ignored but reserved for future use)
-            0: holding register (all DXM local registers are holding registers)
-            3: coil
-            4: input
-            5: input register
-            6: single coil
-            7: single register
-
-    Returns:
-        0 on success or an error code on failure
-        (even on invalid register set, for example, non-writeable registers)
 
     Notes:
         This call may take some time due to networking delays when external devices are polled.
