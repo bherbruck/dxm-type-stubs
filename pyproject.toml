@@ -1,0 +1,57 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]         # use Poetry’s PEP 517 core
+build-backend = "poetry.core.masonry.api"
+
+[project]
+name            = "dxm-type-stubs"
+version         = "0.1.0"
+description     = "Type stubs for DXM MicroPython scripts"
+readme          = "README.md"
+requires-python = ">=3.7"
+authors         = [{ name = "bherbruck" }]
+license         = { text = "MIT" }
+classifiers     = [
+  "Typing :: Stubs Only",
+  "Development Status :: 3 - Alpha",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: Implementation :: MicroPython",
+]
+
+[tool.poetry]
+include = [
+  "**/*.py",
+  "**/*.pyi",
+]
+
+
+packages = [
+  { include = "micropython.pyi",   from = "stubs" },
+  { include = "micropython.py",    from = "stubs" },
+
+  { include = "pyb.pyi",           from = "stubs" },
+  { include = "pyb.py",            from = "stubs" },
+
+  { include = "uarray.pyi",        from = "stubs" },
+  { include = "uarray.py",         from = "stubs" },
+
+  { include = "ubinascii.pyi",     from = "stubs" },
+  { include = "ubinascii.py",      from = "stubs" },
+
+  { include = "ucollections.pyi",  from = "stubs" },
+  { include = "ucollections.py",   from = "stubs" },
+
+  { include = "ujson.pyi",         from = "stubs" },
+  { include = "ujson.py",          from = "stubs" },
+
+  { include = "urandom.pyi",       from = "stubs" },
+  { include = "urandom.py",        from = "stubs" },
+
+  { include = "ure.pyi",           from = "stubs" },
+  { include = "ure.py",            from = "stubs" },
+
+  { include = "ustruct.pyi",       from = "stubs" },
+  { include = "ustruct.py",        from = "stubs" },
+
+  { include = "utime.pyi",         from = "stubs" },
+  { include = "utime.py",          from = "stubs" },
+]

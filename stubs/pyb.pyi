@@ -3,12 +3,14 @@ Type stub file for the pyb module used in MicroPython for the DXM Controller.
 Based on "MicroPython for the DXM Controller Instruction Manual" (b_51151351 Rev. A, 21 September 2021)
 https://info.bannerengineering.com/cs/groups/public/documents/literature/b_51151351.pdf
 """
+
+from __future__ import annotations
 from typing import List, Union
 
 def api(cmd: int) -> str:
     """
     Access features of the DXM API.
-    
+
     Args:
         cmd: Command value as integer
             6: Register push - Invoke cellular register push
@@ -23,7 +25,7 @@ def api(cmd: int) -> str:
             114: Get Serial Number - Returns string value of device serial number
             200: Reboot - Restarts the device
             212: Update Cell Firmware - Cellular FOTA
-    
+
     Returns:
         Command API response in string format, or "INVALID PA" on error.
     """
@@ -32,7 +34,7 @@ def api(cmd: int) -> str:
 def filein(fileindex: int, maxlen: int = 200) -> str:
     """
     Read bytes from UART, file, TCP socket, or UDP socket.
-    
+
     Args:
         fileindex: Target file/device index
             1: UART (generally serial console)
@@ -47,16 +49,18 @@ def filein(fileindex: int, maxlen: int = 200) -> str:
             13: File 4
             14: File 5
         maxlen: Maximum number of characters to read (default 200)
-    
+
     Returns:
         Content read as a string
     """
     ...
 
-def fileout(fileindex: int, length: int, flags: int, content: str, content2: str = "") -> int:
+def fileout(
+    fileindex: int, length: int, flags: int, content: str, content2: str = ""
+) -> int:
     """
     Write a string to a serial port, email, TCP Socket, UDP socket, or file.
-    
+
     Args:
         fileindex: Target file/device index
             1: UART (generally serial console)
@@ -77,7 +81,7 @@ def fileout(fileindex: int, length: int, flags: int, content: str, content2: str
         content: The content to write
         content2: Optional string; only used for email and SMS
                  (SMS is not supported on the DXM700 models)
-    
+
     Returns:
         0 on success or an error code on failure
     """
@@ -88,7 +92,7 @@ def filepeek(fileindex: int) -> int:
     Reads the number of bytes waiting in a network socket,
     the number of bytes in the serial port read buffer,
     or the size of a file on disc.
-    
+
     Args:
         fileindex: Target file/device index
             1: UART (generally serial console) - Number of bytes in serial out buffer
@@ -102,7 +106,7 @@ def filepeek(fileindex: int) -> int:
             12: File 3
             13: File 4
             14: File 5
-    
+
     Returns:
         Size of file in bytes, or number of bytes in buffer
     """
@@ -111,7 +115,7 @@ def filepeek(fileindex: int) -> int:
 def getreg(reg: int, sid: int, mbtype: int = 0) -> Union[int, float]:
     """
     Returns a register value.
-    
+
     Args:
         reg: The register address
         sid: The Modbus Slave ID
@@ -127,10 +131,10 @@ def getreg(reg: int, sid: int, mbtype: int = 0) -> Union[int, float]:
             5: input register
             6: single coil
             7: single register
-    
+
     Returns:
         Register value (integer or float depending on register type)
-    
+
     Notes:
         The data type of the register (integer or floating point) is determined by
         the register address and Modbus Slave ID (sid). For example, if reading from
@@ -139,10 +143,12 @@ def getreg(reg: int, sid: int, mbtype: int = 0) -> Union[int, float]:
     """
     ...
 
-def multiget(reg: int, count: int, sid: int, mbtype: int = 0) -> Union[List[int], List[float]]:
+def multiget(
+    reg: int, count: int, sid: int, mbtype: int = 0
+) -> Union[List[int], List[float]]:
     """
     Returns a list of register values.
-    
+
     Args:
         reg: The starting register address
         count: The number of registers to get [1,100]
@@ -159,26 +165,28 @@ def multiget(reg: int, count: int, sid: int, mbtype: int = 0) -> Union[List[int]
             5: input register
             6: single coil
             7: single register
-    
+
     Returns:
         List of register values (length will be equal to count)
-    
+
     Notes:
         This call may take some time due to networking delays when external devices are polled.
-        If more than 100 registers are requested, the contents of indices beyond 100 
+        If more than 100 registers are requested, the contents of indices beyond 100
         of the returned list will likely be 0.
     """
     ...
 
-def multiset(reg: int, values: Union[List[int], List[float]], sid: int, mbtype: int = 0) -> int:
+def multiset(
+    reg: int, values: Union[List[int], List[float]], sid: int, mbtype: int = 0
+) -> int:
     """
     Set multiple register values.
-    
+
     Args:
         reg: The starting register address
         values: The list of register values to set (length must be 1 to 100 values)
                Values must match the register type: Uint16 for offboard Modbus registers,
-               int32/uint32 for SID 199 internal registers, and SEM32 format for 
+               int32/uint32 for SID 199 internal registers, and SEM32 format for
                SID 199 floating point registers.
         sid: The Modbus Slave ID
             0-198: External Modbus slave devices
@@ -193,10 +201,10 @@ def multiset(reg: int, values: Union[List[int], List[float]], sid: int, mbtype: 
             5: input register
             6: single coil
             7: single register
-    
+
     Returns:
         0 on success or an error code on failure
-    
+
     Notes:
         This call may take some time due to networking delays when external devices are polled.
     """
@@ -205,7 +213,7 @@ def multiset(reg: int, values: Union[List[int], List[float]], sid: int, mbtype: 
 def setreg(reg: int, value: Union[int, float], sid: int, mbtype: int = 0) -> int:
     """
     Set a register value.
-    
+
     Args:
         reg: The register address
         value: The value to set. Integer values can be written to any register;
@@ -223,11 +231,11 @@ def setreg(reg: int, value: Union[int, float], sid: int, mbtype: int = 0) -> int
             5: input register
             6: single coil
             7: single register
-    
+
     Returns:
         0 on success or an error code on failure
         (even on invalid register set, for example, non-writeable registers)
-    
+
     Notes:
         This call may take some time due to networking delays when external devices are polled.
     """

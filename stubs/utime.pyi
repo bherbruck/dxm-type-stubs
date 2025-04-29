@@ -1,7 +1,7 @@
 """
 time related functions. See: https://docs.micropython.org/en/v1.18/library/time.html
 
-|see_cpython_module| :mod:`python:time` https://docs.python.org/3/library/time.html .
+|see_cpython_module| :mod:`python:time` https://docs.python.org/3/library/time.html
 
 The ``time`` module provides functions for getting the current time and date,
 measuring time intervals, and for delays.
@@ -30,6 +30,7 @@ If actual calendar time is not maintained with a system/MicroPython RTC,
 functions below which require reference to current absolute time may
 behave not as expected.
 """
+
 from typing import Optional, Tuple, Any
 
 def gmtime(secs: Optional[Any] = None) -> Tuple:

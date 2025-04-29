@@ -1,15 +1,15 @@
 """
 Binary/ASCII conversions.
 
-MicroPython module: https://docs.micropython.org/en/v1.22.2/library/binascii.html
+MicroPython module: https://docs.micropython.org/en/latest/library/binascii.html
 
-CPython module: :mod:`python:binascii` https://docs.python.org/3/library/binascii.html .
+CPython module: :mod:`python:binascii` https://docs.python.org/3/library/binascii.html
 
 This module implements conversions between binary data and various
 encodings of it in ASCII form (in both directions).
 
 ---
-Module: 'ubinascii' on micropython-v1.22.2-rp2-RPI_PICO
+Module: 'ubinascii' on micropython-latest-rp2-RPI_PICO
 """
 
 # MCU: {'build': '', 'ver': '1.22.2', 'version': '1.22.2', 'port': 'rp2', 'board': 'RPI_PICO', 'mpy': 'v6.2', 'family': 'micropython', 'cpu': 'RP2040', 'arch': 'armv6m'}

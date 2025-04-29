@@ -1,15 +1,12 @@
 """
 JSON encoding and decoding.
 
-MicroPython module: https://docs.micropython.org/en/v1.22.2/library/json.html
+MicroPython module: https://docs.micropython.org/en/latest/library/json.html
 
-CPython module: :mod:`python:json` https://docs.python.org/3/library/json.html .
+CPython module: :mod:`python:json` https://docs.python.org/3/library/json.html
 
 This modules allows to convert between Python objects and the JSON
 data format.
-
----
-Module: 'ujson' on micropython-v1.22.2-rp2-RPI_PICO
 """
 
 # MCU: {'build': '', 'ver': '1.22.2', 'version': '1.22.2', 'port': 'rp2', 'board': 'RPI_PICO', 'mpy': 'v6.2', 'family': 'micropython', 'cpu': 'RP2040', 'arch': 'armv6m'}

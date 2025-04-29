@@ -1,7 +1,7 @@
 """
 pack and unpack primitive data types. See: https://docs.micropython.org/en/v1.18/library/struct.html
 
-|see_cpython_module| :mod:`python:struct` https://docs.python.org/3/library/struct.html .
+|see_cpython_module| :mod:`python:struct` https://docs.python.org/3/library/struct.html
 
 Supported size/byte order prefixes: ``@``, ``<``, ``>``, ``!``.
 

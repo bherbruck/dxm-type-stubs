@@ -5,7 +5,7 @@ MicroPython module: https://docs.micropython.org/en/v1.23.0/library/random.html
 
 This module implements a pseudo-random number generator (PRNG).
 
-CPython module: :mod:`python:random` https://docs.python.org/3/library/random.html . .
+CPython module: :mod:`python:random` https://docs.python.org/3/library/random.html
 
 .. note::
 
@@ -25,9 +25,6 @@ CPython module: :mod:`python:random` https://docs.python.org/3/library/random.ht
    The :func:`randrange`, :func:`randint` and :func:`choice` functions are only
    available if the ``MICROPY_PY_RANDOM_EXTRA_FUNCS`` configuration option is
    enabled.
-
----
-Module: 'urandom' on micropython-v1.23.0-rp2-RPI_PICO
 """
 
 # MCU: {'build': '', 'ver': '1.23.0', 'version': '1.23.0', 'port': 'rp2', 'board': 'RPI_PICO', 'mpy': 'v6.3', 'family': 'micropython', 'cpu': 'RP2040', 'arch': 'armv6m'}

@@ -1,16 +1,13 @@
 """
 Efficient arrays of numeric data.
 
-MicroPython module: https://docs.micropython.org/en/v1.22.2/library/array.html
+MicroPython module: https://docs.micropython.org/en/latest/library/array.html
 
-CPython module: :mod:`python:array` https://docs.python.org/3/library/array.html .
+CPython module: :mod:`python:array` https://docs.python.org/3/library/array.html
 
 Supported format codes: ``b``, ``B``, ``h``, ``H``, ``i``, ``I``, ``l``,
 ``L``, ``q``, ``Q``, ``f``, ``d`` (the latter 2 depending on the
 floating-point support).
-
----
-Module: 'uarray' on micropython-v1.22.2-rp2-RPI_PICO
 """
 
 # MCU: {'build': '', 'ver': '1.22.2', 'version': '1.22.2', 'port': 'rp2', 'board': 'RPI_PICO', 'mpy': 'v6.2', 'family': 'micropython', 'cpu': 'RP2040', 'arch': 'armv6m'}
