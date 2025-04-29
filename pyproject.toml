@@ -23,7 +23,6 @@ include = [
   "**/*.pyi",
 ]
 
-
 packages = [
   { include = "micropython.pyi",   from = "stubs" },
   { include = "micropython.py",    from = "stubs" },
